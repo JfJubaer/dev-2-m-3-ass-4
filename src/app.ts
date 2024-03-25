@@ -2,6 +2,7 @@ import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import httpStatus from 'http-status';
+import routes from './app/routes';
 
 const app: Application = express();
 
@@ -11,9 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/api/v1/', (req: Request, res: Response) => {
-  res.send('Server is ok');
-});
+app.use('/api/v1/', routes);
 
 //global error handler
 app.use(globalErrorHandler);
