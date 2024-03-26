@@ -6,11 +6,11 @@ import sendResponse from '../../../shared/sendResponse';
 import { IUser } from './user.interfaces';
 import { UserService } from './user.service';
 
-const createStudent: RequestHandler = catchAsync(
+const createUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const user = req.body;
 
-    const result = await UserService.createStudent(user);
+    const result = await UserService.createUser(user);
 
     sendResponse<IUser>(res, {
       statusCode: httpStatus.OK,
@@ -21,6 +21,20 @@ const createStudent: RequestHandler = catchAsync(
   },
 );
 
+const getAllusers: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await UserService.getAllusersFromDB();
+    console.log('hit from control');
+    sendResponse<IUser[]>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Users retrieved successfully',
+      data: result,
+    });
+  },
+);
+
 export const UserController = {
-  createStudent,
+  createUser,
+  getAllusers,
 };
