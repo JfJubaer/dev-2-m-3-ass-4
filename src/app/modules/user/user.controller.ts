@@ -24,7 +24,6 @@ const createUser: RequestHandler = catchAsync(
 const getAllusers: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const result = await UserService.getAllusersFromDB();
-    console.log('hit from control');
     sendResponse<IUser[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -34,7 +33,50 @@ const getAllusers: RequestHandler = catchAsync(
   },
 );
 
+const getOneUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const result = await UserService.getOneUsersFromDB(id);
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User retrieved successfully',
+      data: result,
+    });
+  },
+);
+
+const updateOneUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const result = await UserService.updateOneUserFromDB(id, updatedData);
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User updated successfully',
+      data: result,
+    });
+  },
+);
+
+const deleteOneUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const result = await UserService.deleteOneUsersFromDB(id);
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User deleted successfully',
+      data: result,
+    });
+  },
+);
+
 export const UserController = {
   createUser,
   getAllusers,
+  getOneUser,
+  updateOneUser,
+  deleteOneUser,
 };
