@@ -29,3 +29,10 @@ export type ICow = {
 };
 
 export type UserModel = Model<ICow, Record<string, unknown>>;
+
+export type ICowFilters = {
+  searchTerm?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  location?: string;
+};

@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\successes\\.bac10fd7b1873079e6da9c101d667a9cfaf9a8ab-audit.json",
+    "files": [
+        {
+            "date": 1711740346451,
+            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\successes\\phu-2024-30-03-01-success.log",
+            "hash": "41aee0a36df4dffbf3b4e882b1d25fddf7831f326afb4b51d24c1a1722fc986e"
+        },
+        {
+            "date": 1711745586673,
+            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\successes\\phu-2024-30-03-02-success.log",
+            "hash": "b3f0aefeea6e505ae29849b3486e7eb5e7fd8443da44b5e848e870425ec10094"
+        },
+        {
+            "date": 1711746344646,
+            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\successes\\phu-2024-30-03-03-success.log",
+            "hash": "1e3f88741fa9a8d7333a46c866347d4b1d5f1bf646b7491ac091a5c8ddcf1823"
+        },
+        {
+            "date": 1711752321370,
+            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\successes\\phu-2024-30-03-04-success.log",
+            "hash": "1b75b59055220ae37f6c07bd0707c65219aee995cdc28e1b4e97d98c1f31380f"
+        }
+    ],
+    "hashType": "sha256"
+}

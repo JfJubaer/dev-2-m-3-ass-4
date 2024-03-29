@@ -5,6 +5,9 @@ import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { ICow } from './cow.interface';
 import { cowService } from './cow.service';
+import pick from '../../../shared/pick';
+import { cowsFilterableFields } from './cow.constants';
+import { paginationFields } from '../../../constants/pagination';
 
 const createCow: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
@@ -23,12 +26,17 @@ const createCow: RequestHandler = catchAsync(
 
 const getAllcows: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await cowService.getAllCowsFromDB();
+
+    const filters = pick(req.query, cowsFilterableFields);
+    const paginationOptions = pick(req.query, paginationFields);
+
+    const result = await cowService.getAllCowsFromDB(filters,paginationOptions);
     sendResponse<ICow[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Cows retrieved successfully',
-      data: result,
+      meta: result.meta,
+      data: result.data,
     });
   },
 );
