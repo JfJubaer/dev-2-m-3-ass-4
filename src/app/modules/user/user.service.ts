@@ -26,16 +26,16 @@ const updateOneUserFromDB = async (
   if (!isExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found !');
   }
-  const { name, ...studentData } = payload;
-  const updatedStudentData: Partial<IUser> = { ...studentData };
+  const { name, ...cowUser } = payload;
+  const updatedcowUser: Partial<IUser> = { ...cowUser };
   if (name && Object.keys(name).length > 0) {
     Object.keys(name).forEach(key => {
       const nameKey = `name.${key}` as keyof Partial<IUser>;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (updatedStudentData as any)[nameKey] = name[key as keyof typeof name];
+      (updatedcowUser as any)[nameKey] = name[key as keyof typeof name];
     });
   }
-  const result = await User.findOneAndUpdate({ _id: id }, updatedStudentData, {
+  const result = await User.findOneAndUpdate({ _id: id }, updatedcowUser, {
     new: true,
   });
   return result;

@@ -9,8 +9,8 @@ export type IUser = {
     lastName: string;
   };
   address: string;
-  budget: string; // Savings for buying the cow
-  income: string; // money from selling the cow
+  budget: number; // Savings for buying the cow
+  income: number; // money from selling the cow
 };
 
 export type UserModel = Model<IUser, Record<string, unknown>>;

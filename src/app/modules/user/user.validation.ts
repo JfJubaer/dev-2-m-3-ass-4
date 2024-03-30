@@ -22,10 +22,10 @@ const userValidationSchema = z.object({
     address: z.string({
       required_error: 'address is required',
     }),
-    budget: z.string({
+    budget: z.number({
       required_error: 'budget is required',
     }),
-    income: z.string({
+    income: z.number({
       required_error: 'income is required',
     }),
   }),
@@ -65,12 +65,12 @@ const userUpdateValidationSchema = z.object({
       })
       .optional(),
     budget: z
-      .string({
+    .number({
         required_error: 'budget is required',
       })
       .optional(),
     income: z
-      .string({
+      .number({
         required_error: 'income is required',
       })
       .optional(),

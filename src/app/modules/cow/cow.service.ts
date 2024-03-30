@@ -5,13 +5,17 @@ import { cowsSearchableFields } from './cow.constants';
 import { ICow, ICowFilters } from './cow.interface';
 import { Cow } from './cow.model';
 import { IGenericResponse } from '../../../interfaces/common';
+import ApiError from '../../../errors/ApiError';
+import httpStatus from 'http-status';
 
 const createCow = async (cow: ICow): Promise<ICow | null> => {
   const result = (await Cow.create(cow)).populate('seller');
   return result;
 };
-const getAllCowsFromDB = async (filters:ICowFilters,paginaitions:IPaginationOptions): Promise<IGenericResponse<ICow[]>> => {
-
+const getAllCowsFromDB = async (
+  filters: ICowFilters,
+  paginaitions: IPaginationOptions,
+): Promise<IGenericResponse<ICow[]>> => {
   const { searchTerm, ...filtersData } = filters;
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelpers.calculatePagination(paginaitions);
@@ -29,12 +33,16 @@ const getAllCowsFromDB = async (filters:ICowFilters,paginaitions:IPaginationOpti
     });
   }
 
-  if (Object.keys(filtersData).length) {
-    andConditions.push({
-      $and: Object.entries(filtersData).map(([field, value]) => ({
-        [field]: value,
-      })),
-    });
+  if (filtersData.minPrice !== undefined) {
+    andConditions.push({ price: { $gte: filtersData.minPrice } });
+  }
+
+  // Add condition for maxPrice
+  if (filtersData.maxPrice !== undefined) {
+    andConditions.push({ price: { $lte: filtersData.maxPrice } });
+  }
+  if (filtersData.location !== undefined) {
+    andConditions.push({ location: { $eq: filtersData.location } });
   }
 
   const sortConditions: { [key: string]: SortOrder } = {};
@@ -50,7 +58,7 @@ const getAllCowsFromDB = async (filters:ICowFilters,paginaitions:IPaginationOpti
     .skip(skip)
     .limit(limit);
 
-    // console.log(result)
+  // console.log(result)
 
   const total = await Cow.countDocuments(whereConditions);
 
@@ -64,7 +72,34 @@ const getAllCowsFromDB = async (filters:ICowFilters,paginaitions:IPaginationOpti
   };
 };
 
+const getOneCowFromDB = async (id: string): Promise<ICow | null> => {
+  const result = Cow.findOne({ _id: id });
+  return result;
+};
+
+const updateOneCowFromDB = async (
+  id: string,
+  payload: Partial<ICow>,
+): Promise<ICow | null> => {
+  const isExist = await Cow.findOne({ _id: id });
+  if (!isExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found !');
+  }
+  const result = await Cow.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
+const deleteOnecowFromDB = async (id: string): Promise<ICow | null> => {
+  const result = await Cow.findByIdAndDelete({ _id: id });
+  return result;
+};
+
 export const cowService = {
   createCow,
   getAllCowsFromDB,
+  getOneCowFromDB,
+  updateOneCowFromDB,
+  deleteOnecowFromDB
 };
