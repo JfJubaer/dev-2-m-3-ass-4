@@ -1,55 +1,55 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\.2b43bc75fe043997429636a1283ad27dd8753cb4-audit.json",
+  "files": [
+    {
+      "date": 1711740346458,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-01-error.log",
+      "hash": "d9e3d4fafc561dd69c3fca738ea62a1d92c623b9b4f5b10b6391e63dfeaeb8d9"
     },
-    "auditLog": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\.2b43bc75fe043997429636a1283ad27dd8753cb4-audit.json",
-    "files": [
-        {
-            "date": 1711740346458,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-01-error.log",
-            "hash": "d9e3d4fafc561dd69c3fca738ea62a1d92c623b9b4f5b10b6391e63dfeaeb8d9"
-        },
-        {
-            "date": 1711745586683,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-02-error.log",
-            "hash": "4f15d0aca5912df97687c5c37f11346a059f9bad0f15539b99ee94973639bdbd"
-        },
-        {
-            "date": 1711746344654,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-03-error.log",
-            "hash": "c00b08f5bc339b6ff56eeadb42f19ca3b79c4f0c3948788d6e2fa7cc07b5e66c"
-        },
-        {
-            "date": 1711752321378,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-04-error.log",
-            "hash": "9b33a66fd795764a94e978eae4f60dbd571f787883a4551efe2e9d3f5a287261"
-        },
-        {
-            "date": 1711795503332,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-16-error.log",
-            "hash": "10dc00582ae3b1580b936f2312a8482ca550ee1992bbe88740ff37addc9e53eb"
-        },
-        {
-            "date": 1711796498081,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-17-error.log",
-            "hash": "9ac7b420a81c49e71f5193774f8920e23a9f5c45d15e92fc6c03019798a3554b"
-        },
-        {
-            "date": 1711824353180,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-31-03-00-error.log",
-            "hash": "6ce22f786f0bc731af86606c44c8c2a1b57e027a7728fbff3fbb790fe07bfcf5"
-        },
-        {
-            "date": 1711825303616,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-31-03-01-error.log",
-            "hash": "f129f8dc73b1eab29c93811dff606f58dbf5c1cec141d092b16a09e3b6866e79"
-        },
-        {
-            "date": 1711829745377,
-            "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-31-03-02-error.log",
-            "hash": "aca06d870b4bf46956d9a24acb5e14b214ebb39c5e7cfc5a2d42fb8bdb62b9fb"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1711745586683,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-02-error.log",
+      "hash": "4f15d0aca5912df97687c5c37f11346a059f9bad0f15539b99ee94973639bdbd"
+    },
+    {
+      "date": 1711746344654,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-03-error.log",
+      "hash": "c00b08f5bc339b6ff56eeadb42f19ca3b79c4f0c3948788d6e2fa7cc07b5e66c"
+    },
+    {
+      "date": 1711752321378,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-04-error.log",
+      "hash": "9b33a66fd795764a94e978eae4f60dbd571f787883a4551efe2e9d3f5a287261"
+    },
+    {
+      "date": 1711795503332,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-16-error.log",
+      "hash": "10dc00582ae3b1580b936f2312a8482ca550ee1992bbe88740ff37addc9e53eb"
+    },
+    {
+      "date": 1711796498081,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-30-03-17-error.log",
+      "hash": "9ac7b420a81c49e71f5193774f8920e23a9f5c45d15e92fc6c03019798a3554b"
+    },
+    {
+      "date": 1711824353180,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-31-03-00-error.log",
+      "hash": "6ce22f786f0bc731af86606c44c8c2a1b57e027a7728fbff3fbb790fe07bfcf5"
+    },
+    {
+      "date": 1711825303616,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-31-03-01-error.log",
+      "hash": "f129f8dc73b1eab29c93811dff606f58dbf5c1cec141d092b16a09e3b6866e79"
+    },
+    {
+      "date": 1711829745377,
+      "name": "C:\\Users\\User\\Desktop\\Dev 2.0\\Mission-3\\dev-2-m-1-ass-3\\logs\\winston\\errors\\phu-2024-31-03-02-error.log",
+      "hash": "aca06d870b4bf46956d9a24acb5e14b214ebb39c5e7cfc5a2d42fb8bdb62b9fb"
+    }
+  ],
+  "hashType": "sha256"
 }

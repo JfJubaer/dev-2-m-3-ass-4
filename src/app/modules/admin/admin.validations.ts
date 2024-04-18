@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
-const userValidationSchema = z.object({
+const adminValidationSchema = z.object({
   body: z.object({
     password: z
       .string({
         required_error: 'Password is required',
       })
       .min(8),
-    role: z.enum(['seller', 'buyer']),
+    role: z.enum(['admin']), // Role is fixed to 'admin'
     name: z.object({
       firstName: z.string({
         required_error: 'Firstname is required',
@@ -22,16 +22,10 @@ const userValidationSchema = z.object({
     address: z.string({
       required_error: 'address is required',
     }),
-    budget: z.number({
-      required_error: 'budget is required',
-    }),
-    income: z.number({
-      required_error: 'income is required',
-    }),
   }),
 });
 
-const userUpdateValidationSchema = z.object({
+const adminUpdateValidationSchema = z.object({
   body: z.object({
     password: z
       .string({
@@ -39,7 +33,6 @@ const userUpdateValidationSchema = z.object({
       })
       .min(8)
       .optional(),
-    role: z.enum(['seller', 'buyer']).optional(),
     name: z
       .object({
         firstName: z
@@ -64,20 +57,31 @@ const userUpdateValidationSchema = z.object({
         required_error: 'address is required',
       })
       .optional(),
-    budget: z
-      .number({
-        required_error: 'budget is required',
-      })
-      .optional(),
-    income: z
-      .number({
-        required_error: 'income is required',
-      })
-      .optional(),
   }),
 });
 
-export const UserValidation = {
-  userValidationSchema,
-  userUpdateValidationSchema,
+const loginZodSchema = z.object({
+  body: z.object({
+    phoneNumber: z.string({
+      required_error: 'Number is required',
+    }),
+    password: z.string({
+      required_error: 'Password is required',
+    }),
+  }),
+});
+
+const refreshTokenZodSchema = z.object({
+  cookies: z.object({
+    refreshToken: z.string({
+      required_error: 'Refresh Token is required',
+    }),
+  }),
+});
+
+export const AdminValidation = {
+  adminValidationSchema,
+  adminUpdateValidationSchema,
+  loginZodSchema,
+  refreshTokenZodSchema,
 };

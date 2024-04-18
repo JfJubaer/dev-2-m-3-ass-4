@@ -101,5 +101,5 @@ export const cowService = {
   getAllCowsFromDB,
   getOneCowFromDB,
   updateOneCowFromDB,
-  deleteOnecowFromDB
+  deleteOnecowFromDB,
 };

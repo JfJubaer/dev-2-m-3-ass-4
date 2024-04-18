@@ -8,13 +8,8 @@ const router = express.Router();
 router.post(
   '/',
   validateRequest(orderValidation.orderValidationSchema),
-  orderController.createorder
-
+  orderController.createorder,
 );
-router.get(
-  '/',
-  orderController.getAllorders
-);
-
+router.get('/', orderController.getAllorders);
 
 export const orderRoutes = router;

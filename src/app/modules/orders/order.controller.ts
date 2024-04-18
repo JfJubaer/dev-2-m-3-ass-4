@@ -33,8 +33,6 @@ const getAllorders: RequestHandler = catchAsync(
   },
 );
 
-
-
 export const orderController = {
   createorder,
   getAllorders,

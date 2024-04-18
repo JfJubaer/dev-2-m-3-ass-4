@@ -86,5 +86,5 @@ export const CowController = {
   getAllcows,
   getOneCow,
   updateOneCow,
-  deleteOneCow
+  deleteOneCow,
 };

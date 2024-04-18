@@ -12,5 +12,5 @@ const orderValidationSchema = z.object({
 });
 
 export const orderValidation = {
-    orderValidationSchema
+  orderValidationSchema,
 };

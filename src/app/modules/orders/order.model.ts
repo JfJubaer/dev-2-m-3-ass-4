@@ -5,7 +5,7 @@ const orderSchema = new Schema<Iorder>(
   {
     cow: {
       type: Schema.Types.ObjectId,
-      ref: 'Cow', 
+      ref: 'Cow',
       required: true,
     },
     buyer: {
