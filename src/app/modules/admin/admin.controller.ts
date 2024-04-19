@@ -5,7 +5,8 @@ import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { IAdmin } from './admin.interface'; // Assuming you have defined the admin interfaces
 import { AdminService } from './admin.service'; // Assuming you have an AdminService similar to UserService
-// import config from '../../../config';
+import config from '../../../config';
+import { ILoginUserResponse } from '../auth.ts/auth.interface';
 
 const createAdmin: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
@@ -21,25 +22,25 @@ const createAdmin: RequestHandler = catchAsync(
   },
 );
 
-// const loginAdmin = catchAsync(async (req: Request, res: Response) => {
-//   const { ...loginData } = req.body;
-//   const result = await AdminService.loginUser(loginData);
-//   const { refreshToken } = result;
-//   // set refresh token into cookie
-//   const cookieOptions = {
-//     secure: config.env === 'production',
-//     httpOnly: true,
-//   };
+const loginAdmin = catchAsync(async (req: Request, res: Response) => {
+  const { ...loginData } = req.body;
+  const result = await AdminService.loginUser(loginData);
+  const { refreshToken, ...others } = result;
+  // set refresh token into cookie
+  const cookieOptions = {
+    secure: config.env === 'production',
+    httpOnly: true,
+  };
 
-//   res.cookie('refreshToken', refreshToken, cookieOptions);
+  res.cookie('refreshToken', refreshToken, cookieOptions);
 
-//   sendResponse<ILoginUserResponse>(res, {
-//     statusCode: 200,
-//     success: true,
-//     message: 'User logged in successfully !',
-//     data: result,
-//   });
-// });
+  sendResponse<ILoginUserResponse>(res, {
+    statusCode: 200,
+    success: true,
+    message: 'User logged in successfully !',
+    data: others,
+  });
+});
 
 const getAllAdmins: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
@@ -99,5 +100,5 @@ export const AdminController = {
   getOneAdmin,
   updateOneAdmin,
   deleteOneAdmin,
-  // loginAdmin,
+  loginAdmin,
 };

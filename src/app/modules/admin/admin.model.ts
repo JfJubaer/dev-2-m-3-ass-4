@@ -45,21 +45,21 @@ const adminSchema = new Schema<IAdmin, AdminModel>(
   },
 );
 
-// adminSchema.statics.isUserExist = async function (
-//   phoneNumber: string,
-// ): Promise<IAdmin | null> {
-//   return await Admin.findOne(
-//     { phoneNumber },
-//     { phoneNumber: 1, password: 1, role: 1 },
-//   );
-// };
+adminSchema.statics.isUserExist = async function (
+  phoneNumber: string,
+): Promise<IAdmin | null> {
+  return await Admin.findOne(
+    { phoneNumber },
+    { phoneNumber: 1, password: 1, role: 1, _id: 1 },
+  );
+};
 
-// adminSchema.statics.isPasswordMatched = async function (
-//   givenPassword: string,
-//   savedPassword: string,
-// ): Promise<boolean> {
-//   return await bcrypt.compare(givenPassword, savedPassword);
-// };
+adminSchema.statics.isPasswordMatched = async function (
+  givenPassword: string,
+  savedPassword: string,
+): Promise<boolean> {
+  return await bcrypt.compare(givenPassword, savedPassword);
+};
 
 adminSchema.pre('save', async function (next) {
   // hashing user password

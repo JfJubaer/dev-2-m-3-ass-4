@@ -9,11 +9,11 @@ router.post(
   validateRequest(AdminValidation.adminValidationSchema),
   AdminController.createAdmin,
 );
-// router.post(
-//   '/login',
-//   validateRequest(AdminValidation.loginZodSchema),
-//   AdminController.loginAdmin,
-// );
+router.post(
+  '/login',
+  validateRequest(AdminValidation.loginZodSchema),
+  AdminController.loginAdmin,
+);
 
 router.get('/', AdminController.getAllAdmins);
 

@@ -2,6 +2,10 @@ import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import { IAdmin } from './admin.interface'; // Assuming you have defined the admin interfaces
 import { Admin } from './admin.model'; // Assuming you have created an Admin model
+import { jwtHelpers } from '../../../helpers/jwthelpers';
+import config from '../../../config';
+import { Secret } from 'jsonwebtoken';
+import { ILoginUser, ILoginUserResponse } from '../auth.ts/auth.interface';
 
 const createAdmin = async (admin: IAdmin): Promise<IAdmin | null> => {
   const result = await Admin.create(admin);
@@ -46,43 +50,43 @@ const deleteOneAdminFromDB = async (id: string): Promise<IAdmin | null> => {
   return result;
 };
 
-// const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
-//   const { phoneNumber, password } = payload;
+const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
+  const { phoneNumber, password } = payload;
 
-//   const isUserExist = await Admin.isUserExist(phoneNumber);
+  const isUserExist = await Admin.isUserExist(phoneNumber);
 
-//   if (!isUserExist) {
-//     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
-//   }
+  if (!isUserExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
+  }
 
-//   if (
-//     isUserExist.password &&
-//     !(await Admin.isPasswordMatched(password, isUserExist.password))
-//   ) {
-//     throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
-//   }
+  if (
+    isUserExist.password &&
+    !(await Admin.isPasswordMatched(password, isUserExist.password))
+  ) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
+  }
 
-//   //create access token & refresh token
+  //create access token & refresh token
 
-//   const { _id, role } = isUserExist;
+  const { _id, role } = isUserExist;
 
-//   const accessToken = jwtHelpers.createToken(
-//     { _id, role },
-//     config.jwt.secret as Secret,
-//     config.jwt.expires_in as string,
-//   );
+  const accessToken = jwtHelpers.createToken(
+    { _id, role, phoneNumber },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string,
+  );
 
-//   const refreshToken = jwtHelpers.createToken(
-//     { _id, role },
-//     config.jwt.refresh_secret as Secret,
-//     config.jwt.refresh_expires_in as string,
-//   );
+  const refreshToken = jwtHelpers.createToken(
+    { _id, role, phoneNumber },
+    config.jwt.refresh_secret as Secret,
+    config.jwt.refresh_expires_in as string,
+  );
 
-//   return {
-//     accessToken,
-//     refreshToken,
-//   };
-// };
+  return {
+    accessToken,
+    refreshToken,
+  };
+};
 
 export const AdminService = {
   createAdmin,
@@ -90,5 +94,5 @@ export const AdminService = {
   getOneAdminFromDB,
   updateOneAdminFromDB,
   deleteOneAdminFromDB,
-  // loginUser,
+  loginUser,
 };
