@@ -5,7 +5,7 @@ import { Admin } from './admin.model'; // Assuming you have created an Admin mod
 import { jwtHelpers } from '../../../helpers/jwthelpers';
 import config from '../../../config';
 import { Secret } from 'jsonwebtoken';
-import { ILoginUser, ILoginUserResponse } from '../auth.ts/auth.interface';
+import { ILoginUser, ILoginUserResponse } from '../authTs/auth.interface';
 
 const createAdmin = async (admin: IAdmin): Promise<IAdmin | null> => {
   const result = await Admin.create(admin);

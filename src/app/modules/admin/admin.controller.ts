@@ -6,7 +6,7 @@ import sendResponse from '../../../shared/sendResponse';
 import { IAdmin } from './admin.interface'; // Assuming you have defined the admin interfaces
 import { AdminService } from './admin.service'; // Assuming you have an AdminService similar to UserService
 import config from '../../../config';
-import { ILoginUserResponse } from '../auth.ts/auth.interface';
+import { ILoginUserResponse } from '../authTs/auth.interface';
 
 const createAdmin: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {

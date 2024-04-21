@@ -3,7 +3,7 @@ import { UserRoutes } from '../modules/user/user.routes';
 import { CowRoutes } from '../modules/cow/cow.route';
 import { orderRoutes } from '../modules/orders/orders.routes';
 import { adminRoutes } from '../modules/admin/admin.route';
-import { authRoutes } from '../modules/auth.ts/auth.route';
+import { authRoutes } from '../modules/authTs/auth.route';
 
 const router = express.Router();
 

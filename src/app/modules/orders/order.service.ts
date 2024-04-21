@@ -59,7 +59,7 @@ const createorder = async (payload: Iorder): Promise<Iorder | null> => {
       throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to update seller');
     }
 
-    console.log(buyermoney, sellermoney);
+    // console.log(buyermoney, sellermoney);
 
     await session.commitTransaction();
     await session.endSession();
@@ -73,9 +73,36 @@ const createorder = async (payload: Iorder): Promise<Iorder | null> => {
   return result;
 };
 
-const getAllordersFromDB = async (): Promise<Iorder[]> => {
-  const result = await Order.find();
-  return result;
+const getAllordersFromDB = async (
+  role: string,
+  _id: string,
+): Promise<Iorder[]> => {
+  // verify token
+
+  let newResult: Iorder[] = [];
+
+  if (role === 'admin') {
+    newResult = await Order.find();
+  }
+  if (role === 'buyer') {
+    newResult = await Order.find({ buyer: _id });
+    if (!newResult.length) {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Goru na kina tamasha??');
+    }
+  }
+  if (role === 'seller') {
+    const cows = await Cow.find({ seller: _id });
+    if (!cows.length) {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Goru na beicha tamasha??');
+    } else {
+      const cowIds = cows.map(cow => cow._id);
+      newResult = await Order.find({ cow: { $in: cowIds } });
+      if (!newResult.length) {
+        throw new ApiError(httpStatus.FORBIDDEN, 'Goru na beicha tamasha??');
+      }
+    }
+  }
+  return newResult;
 };
 
 export const orderService = {
